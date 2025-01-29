@@ -1,0 +1,106 @@
+{
+  "nameTheme": "Animaux",
+  "availableLanguages": ["fr", "en", "es", "de", "it"],
+  "elements": [
+    {
+      "url": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg",
+      "translations": {
+        "fr": "Chat",
+        "en": "Cat",
+        "es": "Gato",
+        "de": "Katze",
+        "it": "Gatto"
+      }
+    },
+    {
+      "url": "https://images.pexels.com/photos/4587973/pexels-photo-4587973.jpeg",
+      "translations": {
+        "fr": "Chien",
+        "en": "Dog",
+        "es": "Perro",
+        "de": "Hund",
+        "it": "Cane"
+      }
+    },
+    {
+      "url": "https://images.pexels.com/photos/45853/mallard-drake-waterfowl-bird-45853.jpeg",
+      "translations": {
+        "fr": "Oiseau",
+        "en": "Bird",
+        "es": "Pájaro",
+        "de": "Vogel",
+        "it": "Uccello"
+      }
+    },
+    {
+      "url": "https://images.pexels.com/photos/52500/horse-black-horse-brown-horse-52500.jpeg",
+      "translations": {
+        "fr": "Cheval",
+        "en": "Horse",
+        "es": "Caballo",
+        "de": "Pferd",
+        "it": "Cavallo"
+      }
+    },
+    {
+      "url": "https://images.pexels.com/photos/128756/pexels-photo-128756.jpeg",
+      "translations": {
+        "fr": "Poisson",
+        "en": "Fish",
+        "es": "Pez",
+        "de": "Fisch",
+        "it": "Pesce"
+      }
+    },
+    {
+      "url": "https://images.pexels.com/photos/33152/rabbit-white-close-up-easter.jpg",
+      "translations": {
+        "fr": "Lapin",
+        "en": "Rabbit",
+        "es": "Conejo",
+        "de": "Kaninchen",
+        "it": "Coniglio"
+      }
+    },
+    {
+      "url": "https://images.pexels.com/photos/247502/pexels-photo-247502.jpeg",
+      "translations": {
+        "fr": "Tigre",
+        "en": "Tiger",
+        "es": "Tigre",
+        "de": "Tiger",
+        "it": "Tigre"
+      }
+    },
+    {
+      "url": "https://images.pexels.com/photos/2080915/pexels-photo-2080915.jpeg",
+      "translations": {
+        "fr": "Éléphant",
+        "en": "Elephant",
+        "es": "Elefante",
+        "de": "Elefant",
+        "it": "Elefante"
+      }
+    },
+    {
+      "url": "https://images.pexels.com/photos/247399/pexels-photo-247399.jpeg",
+      "translations": {
+        "fr": "Serpent",
+        "en": "Snake",
+        "es": "Serpiente",
+        "de": "Schlange",
+        "it": "Serpente"
+      }
+    },
+    {
+      "url": "https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg",
+      "translations": {
+        "fr": "Singe",
+        "en": "Monkey",
+        "es": "Mono",
+        "de": "Affe",
+        "it": "Scimmia"
+      }
+    }
+  ]
+}
