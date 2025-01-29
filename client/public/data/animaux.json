@@ -1,105 +1,71 @@
 {
   "nameTheme": "Animaux",
-  "availableLanguages": ["fr", "en", "es", "de", "it"],
+  "availableLanguages": ["fr", "en", "es"],
   "elements": [
     {
-      "url": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg",
-      "translations": {
-        "fr": "Chat",
-        "en": "Cat",
-        "es": "Gato",
-        "de": "Katze",
-        "it": "Gatto"
-      }
-    },
-    {
-      "url": "https://images.pexels.com/photos/4587973/pexels-photo-4587973.jpeg",
+      "urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/2/26/Labrador_retriever_yellow_puppy.jpg"
+      ],
       "translations": {
         "fr": "Chien",
         "en": "Dog",
-        "es": "Perro",
-        "de": "Hund",
-        "it": "Cane"
+        "es": "Perro"
       }
     },
     {
-      "url": "https://images.pexels.com/photos/45853/mallard-drake-waterfowl-bird-45853.jpeg",
+      "urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/b/b6/Felis_catus-cat_on_snow.jpg"
+      ],
       "translations": {
-        "fr": "Oiseau",
-        "en": "Bird",
-        "es": "Pájaro",
-        "de": "Vogel",
-        "it": "Uccello"
+        "fr": "Chat",
+        "en": "Cat",
+        "es": "Gato"
       }
     },
     {
-      "url": "https://images.pexels.com/photos/52500/horse-black-horse-brown-horse-52500.jpeg",
+      "urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/a/a3/Lion_waiting_in_Namibia_%28cropped%29.jpg"
+      ],
       "translations": {
-        "fr": "Cheval",
-        "en": "Horse",
-        "es": "Caballo",
-        "de": "Pferd",
-        "it": "Cavallo"
+        "fr": "Lion",
+        "en": "Lion",
+        "es": "León"
       }
     },
     {
-      "url": "https://images.pexels.com/photos/128756/pexels-photo-128756.jpeg",
-      "translations": {
-        "fr": "Poisson",
-        "en": "Fish",
-        "es": "Pez",
-        "de": "Fisch",
-        "it": "Pesce"
-      }
-    },
-    {
-      "url": "https://images.pexels.com/photos/33152/rabbit-white-close-up-easter.jpg",
-      "translations": {
-        "fr": "Lapin",
-        "en": "Rabbit",
-        "es": "Conejo",
-        "de": "Kaninchen",
-        "it": "Coniglio"
-      }
-    },
-    {
-      "url": "https://images.pexels.com/photos/247502/pexels-photo-247502.jpeg",
-      "translations": {
-        "fr": "Tigre",
-        "en": "Tiger",
-        "es": "Tigre",
-        "de": "Tiger",
-        "it": "Tigre"
-      }
-    },
-    {
-      "url": "https://images.pexels.com/photos/2080915/pexels-photo-2080915.jpeg",
+      "urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/7/70/Elephant_at_Masai_Mara.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/3/37/African_Bush_Elephant.jpg"
+      ],
       "translations": {
         "fr": "Éléphant",
         "en": "Elephant",
-        "es": "Elefante",
-        "de": "Elefant",
-        "it": "Elefante"
+        "es": "Elefante"
       }
     },
     {
-      "url": "https://images.pexels.com/photos/247399/pexels-photo-247399.jpeg",
+      "urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/6/6b/Zebra_Botswana_%28236692270%29.jpeg",
+        "https://upload.wikimedia.org/wikipedia/commons/e/eb/Zebra_Herd.jpg"
+      ],
       "translations": {
-        "fr": "Serpent",
-        "en": "Snake",
-        "es": "Serpiente",
-        "de": "Schlange",
-        "it": "Serpente"
+        "fr": "Zèbre",
+        "en": "Zebra",
+        "es": "Cebra"
       }
     },
     {
-      "url": "https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg",
+      "urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/9/96/Giraffe_%28Giraffa_camelopardalis%29_%28226629661%29.jpeg",
+        "https://upload.wikimedia.org/wikipedia/commons/2/23/Giraffe_Mikumi_National_Park.jpg"
+      ],
       "translations": {
-        "fr": "Singe",
-        "en": "Monkey",
-        "es": "Mono",
-        "de": "Affe",
-        "it": "Scimmia"
+        "fr": "Girafe",
+        "en": "Giraffe",
+        "es": "Jirafa"
       }
     }
   ]
