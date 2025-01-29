@@ -1,0 +1,45 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Java / Spring Boot
+target/
+*.jar
+*.war
+*.class
+*.log
+**/logs/
+**/*.log
+*.DS_Store
+
+# Gradle
+.gradle/
+mvnw
+mvnw.cmd
+/.m2
+/.gradle
+/build/
+
+# Node.js / Next.js (si applicable)
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-error.log
+
+# Lock files (selon package manager utilisé)
+package-lock.json
+yarn.lock
+
+# Environment files (⚠️ Ne jamais commit des secrets !)
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# OS-specific files
+Thumbs.db
+.DS_Store
