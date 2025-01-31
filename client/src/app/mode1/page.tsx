@@ -50,7 +50,7 @@ export default function Mode1Page() {
                     return (
                         <div key={index} style={styles.card}>
                             <h3>{firstTranslation}</h3>
-                            <img src={element.urls[0]} alt={firstTranslation} style={styles.image} />
+                            <img src={element.urls[0    ]} alt={firstTranslation} style={styles.image} />
                         </div>
                     );
                 })}
