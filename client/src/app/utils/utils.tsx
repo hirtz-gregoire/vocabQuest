@@ -4,14 +4,16 @@ export type EventHandlers = Pick<
 >;
 
 export interface ThemeData {
+    id: string;
     nameTheme: string;
+    description: string;
     availableLanguages: string[];
     elements: ThemeElement[];
 }
 
 export interface ThemeElement {
     urls: string[];
-    translations: Record<string, string>; // language: translation
+    translations: Record<string, string>; // Clé = langue, Valeur = traduction
 }
 
 export function shuffle<T>(array: T[]) {

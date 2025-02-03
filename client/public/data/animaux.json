@@ -1,71 +1,243 @@
 {
-  "nameTheme": "Animaux",
-  "availableLanguages": ["fr", "en", "es"],
+  "id": "679d54f104b74f5e4c8430e2",
+  "nameTheme": "Animaux de la Ferme",
+  "description": "Découvrez une variété d'animaux de la ferme dans différentes langues.",
+  "availableLanguages": [
+    "fr",
+    "en",
+    "es",
+    "it",
+    "de",
+    "ja",
+    "zh"
+  ],
   "elements": [
     {
-      "urls": [
-        "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/2/26/Labrador_retriever_yellow_puppy.jpg"
-      ],
+      "urls": [],
       "translations": {
-        "fr": "Chien",
-        "en": "Dog",
-        "es": "Perro"
+        "de": "Kuh",
+        "ja": "牛",
+        "en": "Cow",
+        "it": "Mucca",
+        "fr": "Vache",
+        "es": "Vaca",
+        "zh": "牛"
       }
     },
     {
-      "urls": [
-        "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/b/b6/Felis_catus-cat_on_snow.jpg"
-      ],
+      "urls": [],
       "translations": {
-        "fr": "Chat",
-        "en": "Cat",
-        "es": "Gato"
+        "de": "Schwein",
+        "ja": "豚",
+        "en": "Pig",
+        "it": "Maiale",
+        "fr": "Cochon",
+        "es": "Cerdo",
+        "zh": "猪"
       }
     },
     {
-      "urls": [
-        "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/a/a3/Lion_waiting_in_Namibia_%28cropped%29.jpg"
-      ],
+      "urls": [],
       "translations": {
-        "fr": "Lion",
-        "en": "Lion",
-        "es": "León"
+        "de": "Huhn",
+        "ja": "鶏",
+        "en": "Chicken",
+        "it": "Gallina",
+        "fr": "Poule",
+        "es": "Gallina",
+        "zh": "鸡"
       }
     },
     {
-      "urls": [
-        "https://upload.wikimedia.org/wikipedia/commons/7/70/Elephant_at_Masai_Mara.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/3/37/African_Bush_Elephant.jpg"
-      ],
+      "urls": [],
       "translations": {
-        "fr": "Éléphant",
-        "en": "Elephant",
-        "es": "Elefante"
+        "de": "Schaf",
+        "ja": "羊",
+        "en": "Sheep",
+        "it": "Pecora",
+        "fr": "Mouton",
+        "es": "Oveja",
+        "zh": "羊"
       }
     },
     {
-      "urls": [
-        "https://upload.wikimedia.org/wikipedia/commons/6/6b/Zebra_Botswana_%28236692270%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/e/eb/Zebra_Herd.jpg"
-      ],
+      "urls": [],
       "translations": {
-        "fr": "Zèbre",
-        "en": "Zebra",
-        "es": "Cebra"
+        "de": "Pferd",
+        "ja": "馬",
+        "en": "Horse",
+        "it": "Cavallo",
+        "fr": "Cheval",
+        "es": "Caballo",
+        "zh": "马"
       }
     },
     {
-      "urls": [
-        "https://upload.wikimedia.org/wikipedia/commons/9/96/Giraffe_%28Giraffa_camelopardalis%29_%28226629661%29.jpeg",
-        "https://upload.wikimedia.org/wikipedia/commons/2/23/Giraffe_Mikumi_National_Park.jpg"
-      ],
+      "urls": [],
       "translations": {
-        "fr": "Girafe",
-        "en": "Giraffe",
-        "es": "Jirafa"
+        "de": "Ente",
+        "ja": "アヒル",
+        "en": "Duck",
+        "it": "Anatra",
+        "fr": "Canard",
+        "es": "Pato",
+        "zh": "鸭"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Ziege",
+        "ja": "ヤギ",
+        "en": "Goat",
+        "it": "Capra",
+        "fr": "Chèvre",
+        "es": "Cabra",
+        "zh": "山羊"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Esel",
+        "ja": "ロバ",
+        "en": "Donkey",
+        "it": "Asino",
+        "fr": "Âne",
+        "es": "Burro",
+        "zh": "驴"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Hahn",
+        "ja": "雄鶏",
+        "en": "Rooster",
+        "it": "Gallo",
+        "fr": "Coq",
+        "es": "Gallo",
+        "zh": "公鸡"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Küken",
+        "ja": "ひよこ",
+        "en": "Chick",
+        "it": "Pulcino",
+        "fr": "Poussin",
+        "es": "Pollito",
+        "zh": "小鸡"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Stute",
+        "ja": "メア",
+        "en": "Mare",
+        "it": "Giumenta",
+        "fr": "Jument",
+        "es": "Yegua",
+        "zh": "母马"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Meerschweinchen",
+        "ja": "モルモット",
+        "en": "Guinea Pig",
+        "it": "Porcellino d'India",
+        "fr": "Cochon d'Inde",
+        "es": "Cobaya",
+        "zh": "豚鼠"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Hähnchen",
+        "ja": "チキン",
+        "en": "Chick",
+        "it": "Pollo",
+        "fr": "Poulet",
+        "es": "Pollo",
+        "zh": "小鸡"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Truthahn",
+        "ja": "七面鳥",
+        "en": "Turkey",
+        "it": "Tacchino",
+        "fr": "Dindon",
+        "es": "Pavo",
+        "zh": "火鸡"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Esel",
+        "ja": "ロバ",
+        "en": "Donkey",
+        "it": "Asino",
+        "fr": "Ane",
+        "es": "Burro",
+        "zh": "驴"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Gans",
+        "ja": "ガチョウ",
+        "en": "Goose",
+        "it": "Oca",
+        "fr": "Oie",
+        "es": "Ganso",
+        "zh": "鹅"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Legende Henne",
+        "ja": "産卵鶏",
+        "en": "Laying Hen",
+        "it": "Gallina che depone",
+        "fr": "Poule pondeuse",
+        "es": "Gallina ponedora",
+        "zh": "下蛋母鸡"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Kampfhahn",
+        "ja": "闘鶏",
+        "en": "Fighting Cock",
+        "it": "Gallo da combattimento",
+        "fr": "Coq de combat",
+        "es": "Gallo de pelea",
+        "zh": "斗鸡"
+      }
+    },
+    {
+      "urls": [],
+      "translations": {
+        "de": "Wassermöwe",
+        "ja": "水の鶏",
+        "en": "Water Hen",
+        "it": "Gallina d'acqua",
+        "fr": "Poule d'eau",
+        "es": "Gallina de agua",
+        "zh": "水母鸡"
       }
     }
   ]

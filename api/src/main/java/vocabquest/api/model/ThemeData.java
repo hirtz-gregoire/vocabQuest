@@ -4,31 +4,39 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
-import java.util.Map;
 
 @Document(collection = "themes") // Collection MongoDB
 public class ThemeData {
+
     @Id
     private String id;
-    private Map<String, String> nameTheme; // 🌍 Stocke le nom du thème traduit dans plusieurs langues
+    private String nameTheme; // 🔹 Maintenant un String et non une Map
+    private String description; // 🔹 Ajout du champ description
     private List<String> availableLanguages;
     private List<ThemeElement> elements;
 
+    // 🔹 Constructeur sans arguments (nécessaire pour MongoDB)
     public ThemeData() {}
 
-    // 🔥 Constructeur mis à jour avec nameTheme sous forme de Map
-    public ThemeData(String id, Map<String, String> nameTheme, List<String> availableLanguages, List<ThemeElement> elements) {
+    // 🔹 Constructeur avec arguments
+    public ThemeData(String id, String nameTheme, String description, List<String> availableLanguages, List<ThemeElement> elements) {
         this.id = id;
         this.nameTheme = nameTheme;
+        this.description = description;
         this.availableLanguages = availableLanguages;
         this.elements = elements;
     }
 
+    // 🔹 Getters et Setters
+
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
-    public Map<String, String> getNameTheme() { return nameTheme; }
-    public void setNameTheme(Map<String, String> nameTheme) { this.nameTheme = nameTheme; }
+    public String getNameTheme() { return nameTheme; }
+    public void setNameTheme(String nameTheme) { this.nameTheme = nameTheme; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
     public List<String> getAvailableLanguages() { return availableLanguages; }
     public void setAvailableLanguages(List<String> availableLanguages) { this.availableLanguages = availableLanguages; }
