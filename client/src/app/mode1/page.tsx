@@ -1,17 +1,7 @@
-    "use client";
-
+"use client";
 import { useState, useEffect } from "react";
-
-interface ThemeData {
-    nameTheme: string;
-    availableLanguages: string[];
-    elements: ThemeElement[];
-}
-
-interface ThemeElement {
-    urls: string[];
-    translations: Record<string, string>; // language: translation
-}
+import {ThemeData} from "@/app/utils/utils";
+import {gallery} from "@/app/utils/gallery";
 
 export default function Mode1Page() {
     const [data, setData] = useState<ThemeData | null>(null);
@@ -43,25 +33,38 @@ export default function Mode1Page() {
     return (
         <div style={styles.container}>
             <h1>Galerie - {data.nameTheme}</h1>
-
-            <div style={styles.gallery}>
-                {data.elements.map((element, index) => {
-                    const firstTranslation = Object.values(element.translations)[0] || "Non traduit";
-                    return (
-                        <div key={index} style={styles.card}>
-                            <h3>{firstTranslation}</h3>
-                            <img src={element.urls[0    ]} alt={firstTranslation} style={styles.image} />
-                        </div>
-                    );
-                })}
-            </div>
+            {gallery({
+                gallery: data,
+                styles: {gallery: styles.gallery, card: styles.card, image: styles.image},
+                showNames: true,
+                cardCount: 5,
+                randomize: true,
+                selectedLanguage: "es",
+                cardEvents: {
+                    // TODO
+                    // Remove theses example events
+                    onMouseOver: (event) => {
+                        event.currentTarget.style.backgroundColor = "blue";
+                    },
+                    onMouseOut: (event) => {
+                        event.currentTarget.style.backgroundColor = "";
+                    }
+                }
+            })}
         </div>
     );
 }
 
 const styles: Record<string, React.CSSProperties> = {
-    container: { textAlign: "center", padding: "20px" },
-    gallery: { display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" },
-    card: { backgroundColor: "#f9f9f9", padding: "15px", borderRadius: "10px", textAlign: "center", width: "220px", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" },
-    image: { width: "200px", height: "200px", borderRadius: "10px", objectFit: "cover" }
+    container: {textAlign: "center", padding: "20px"},
+    gallery: {display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center"},
+    card: {
+        backgroundColor: "#f9f9f9",
+        padding: "15px",
+        borderRadius: "10px",
+        textAlign: "center",
+        width: "220px",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
+    },
+    image: {width: "200px", height: "200px", borderRadius: "10px", objectFit: "cover"}
 };
