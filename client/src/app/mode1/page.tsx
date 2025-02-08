@@ -2,15 +2,19 @@
 import { useState, useEffect } from "react";
 import { ThemeData } from "@/app/utils/utils";
 import { gallery } from "@/app/utils/gallery";
+import {theme_selector} from "@/app/utils/theme_selector";
 
 export default function Mode1Page() {
+    const [selectedTheme, setSelectedTheme] = useState<string>("");
     const [data, setData] = useState<ThemeData | null>(null);
+    const [themes, setThemes] = useState<ThemeData[] | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        // Remplacez l'URL par celle du thème détaillé qui contient le tableau "elements"
-        fetch("http://localhost:8080/api/themes/67a745f377de725bb217f608")
+        if(selectedTheme === "") return;
+        setLoading(true);
+        fetch(`/api/theme/${selectedTheme}`) //TODO : use real API
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
@@ -25,6 +29,23 @@ export default function Mode1Page() {
                 setError(error.message);
                 setLoading(false);
             });
+    }, [selectedTheme]);
+
+    useEffect(() => {
+        fetch("/api/themes") //TODO : use real API
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then((data: ThemeData[]) => {
+                setThemes(data);
+                setSelectedTheme(data[0].id);
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
     }, []);
 
     if (loading) return <h1>Chargement des images...</h1>;
@@ -34,6 +55,8 @@ export default function Mode1Page() {
     return (
         <div style={styles.container}>
             <h1>Galerie - {data.nameTheme}</h1>
+            <p>{data.description}</p>
+            {theme_selector({themes: themes ?? [], onThemeSelected: (selectedTheme: string) => setSelectedTheme(selectedTheme)})}
             {gallery({
                 gallery: data,
                 styles: { gallery: styles.gallery, card: styles.card, image: styles.image },
@@ -42,6 +65,7 @@ export default function Mode1Page() {
                 randomize: true,
                 selectedLanguage: "fr",
                 cardEvents: {
+                    // TODO : Remove theses example events
                     onMouseOver: (event) => {
                         event.currentTarget.style.backgroundColor = "blue";
                     },
