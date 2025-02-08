@@ -1,20 +1,23 @@
 "use client";
-import { useState, useEffect } from "react";
-import { ThemeData } from "@/app/utils/utils";
-import { gallery } from "@/app/utils/gallery";
-import {theme_selector} from "@/app/utils/theme_selector";
+import {useEffect, useState} from "react";
+import {APIS, ThemeData} from "@/app/utils/utils";
+import {gallery} from "@/app/utils/gallery";
+import {add_selector} from "@/app/utils/add_selector";
 
 export default function Mode1Page() {
-    const [selectedTheme, setSelectedTheme] = useState<string>("");
-    const [data, setData] = useState<ThemeData | null>(null);
     const [themes, setThemes] = useState<ThemeData[] | null>(null);
+    const [selectedTheme, setSelectedTheme] = useState<ThemeData | null>(null);
+    const [selectedLanguage, setSelectedLanguage] = useState<string>("");
+
+    const [data, setData] = useState<ThemeData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        if(selectedTheme === "") return;
+        if(selectedTheme === null) return;
+
         setLoading(true);
-        fetch(`/api/theme/${selectedTheme}`) //TODO : use real API
+        fetch(`/api/theme/${selectedTheme.id}`) //TODO : use real API
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
@@ -41,7 +44,8 @@ export default function Mode1Page() {
             })
             .then((data: ThemeData[]) => {
                 setThemes(data);
-                setSelectedTheme(data[0].id);
+                setSelectedTheme(data[0]);
+                setSelectedLanguage(data[0].availableLanguages[0])
             })
             .catch((error) => {
                 setError(error.message);
@@ -52,18 +56,40 @@ export default function Mode1Page() {
     if (error) return <h1>Erreur : {error}</h1>;
     if (!data) return <h1>Aucune donnée trouvée</h1>;
 
+    const handleThemeChange = (selectedTheme: string) => {
+        const theme = (themes??[]).find((theme) => theme.id === selectedTheme);
+
+        if (theme) {
+            setSelectedTheme(theme);
+        } else {
+            setSelectedTheme(null);
+        }
+    };
+
+    const themesOptions = (themes ?? []).map((theme) => ({
+        value: theme.id,
+        label: theme.nameTheme,
+    }));
+    const languageOptions = (selectedTheme != null)
+        ? selectedTheme.availableLanguages.map((language) => ({
+            value: language,
+            label: language,
+        }))
+        : [];
+
     return (
         <div style={styles.container}>
             <h1>Galerie - {data.nameTheme}</h1>
             <p>{data.description}</p>
-            {theme_selector({themes: themes ?? [], onThemeSelected: (selectedTheme: string) => setSelectedTheme(selectedTheme)})}
+            {add_selector({options: themesOptions, apiToUse: APIS.Theme, onOptionSelected: handleThemeChange})}
+            {add_selector({options: languageOptions, apiToUse: APIS.Language, onOptionSelected: (selectedLanguage: string) => setSelectedLanguage(selectedLanguage)})}
             {gallery({
                 gallery: data,
                 styles: { gallery: styles.gallery, card: styles.card, image: styles.image },
                 showNames: true,
                 cardCount: 5,
                 randomize: true,
-                selectedLanguage: "fr",
+                selectedLanguage: selectedLanguage,
                 cardEvents: {
                     // TODO : Remove theses example events
                     onMouseOver: (event) => {

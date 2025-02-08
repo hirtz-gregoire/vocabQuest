@@ -3,6 +3,11 @@ export type EventHandlers = Pick<
     Extract<keyof React.DOMAttributes<HTMLDivElement>, `on${string}`>
 >;
 
+export enum APIS {
+    Theme,
+    Language
+}
+
 export interface ThemeData {
     id: string;
     nameTheme: string;

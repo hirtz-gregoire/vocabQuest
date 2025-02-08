@@ -1,24 +1,29 @@
-import {ThemeData} from "@/app/utils/utils";
-import Select, { components, StylesConfig } from "react-select";
+import Select, {components, StylesConfig} from "react-select";
+import {APIS} from "@/app/utils/utils";
 
-export const theme_selector = ({
-                         themes,
-                         onThemeSelected,
+export const add_selector = ({
+                         options,
+                         onOptionSelected,
+                         apiToUse,
                      }: {
-    themes: ThemeData[],
-    onThemeSelected: (selectedTheme: string) => void,
+    options: { value: string, label: string, }[],
+    onOptionSelected: (selectedTheme: string) => void,
+    apiToUse: APIS
 }) => {
-    const options = themes.map((theme) => ({
-        value: theme.id,
-        label: theme.nameTheme,
-    }));
     options.push({ value: "add", label: "+" })
 
-    const onAddTheme = () => {
-        // TODO : Ask the API to generate a new theme
-        // TODO : Wait for the API to create the theme then call onThemeSelected
+    const onAdd = () => {
+        // TODO : Ask the API to generate a new option
         // TODO : Visual cues for when the API is loading the thingy
-        console.log("Adding a new theme !")
+        switch (apiToUse) {
+            case APIS.Language:
+                console.log("Adding a new language !")
+                break;
+            case APIS.Theme:
+                console.log("Adding a new theme !")
+                break;
+        }
+        // TODO : Wait for the API to create the option then call onThemeSelected
     }
 
     const customizeOptions = (props: any) => {
@@ -42,9 +47,9 @@ export const theme_selector = ({
             defaultValue={options[0]}
             onChange={(selectedOption: any) => {
                 if (selectedOption.value === "add") {
-                    onAddTheme();
+                    onAdd();
                 } else {
-                    onThemeSelected(selectedOption.value)
+                    onOptionSelected(selectedOption.value)
                 }
             }}
             components={{ Option: customizeOptions }}
