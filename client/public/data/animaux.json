@@ -1,7 +1,7 @@
 {
-  "id": "679d54f104b74f5e4c8430e2",
+  "id": "67a740f577de725bb217f607",
   "nameTheme": "Animaux de la Ferme",
-  "description": "Découvrez une variété d'animaux de la ferme dans différentes langues.",
+  "description": "Découvrez une sélection d'animaux courants que l'on retrouve dans une ferme.",
   "availableLanguages": [
     "fr",
     "en",
@@ -13,7 +13,11 @@
   ],
   "elements": [
     {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/422218/pexels-photo-422218.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/36347/cow-pasture-animal-almabtrieb.jpg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/51311/cow-calf-cattle-stock-51311.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
         "de": "Kuh",
         "ja": "牛",
@@ -21,11 +25,15 @@
         "it": "Mucca",
         "fr": "Vache",
         "es": "Vaca",
-        "zh": "牛"
+        "zh": "奶牛"
       }
     },
     {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/110820/pexels-photo-110820.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/63285/pig-alp-rona-furna-sow-63285.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/66627/pexels-photo-66627.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
         "de": "Schwein",
         "ja": "豚",
@@ -37,31 +45,27 @@
       }
     },
     {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/195226/pexels-photo-195226.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/1216482/pexels-photo-1216482.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/1405930/pexels-photo-1405930.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
-        "de": "Huhn",
+        "de": "Henne",
         "ja": "鶏",
-        "en": "Chicken",
+        "en": "Hen",
         "it": "Gallina",
         "fr": "Poule",
         "es": "Gallina",
-        "zh": "鸡"
+        "zh": "母鸡"
       }
     },
     {
-      "urls": [],
-      "translations": {
-        "de": "Schaf",
-        "ja": "羊",
-        "en": "Sheep",
-        "it": "Pecora",
-        "fr": "Mouton",
-        "es": "Oveja",
-        "zh": "羊"
-      }
-    },
-    {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/1996333/pexels-photo-1996333.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/53114/horse-arabs-stallion-ride-53114.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/635499/pexels-photo-635499.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
         "de": "Pferd",
         "ja": "馬",
@@ -73,7 +77,27 @@
       }
     },
     {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/288621/pexels-photo-288621.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/678448/pexels-photo-678448.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/97317/pexels-photo-97317.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
+      "translations": {
+        "de": "Schaf",
+        "ja": "羊",
+        "en": "Sheep",
+        "it": "Pecora",
+        "fr": "Mouton",
+        "es": "Oveja",
+        "zh": "绵羊"
+      }
+    },
+    {
+      "urls": [
+        "https://images.pexels.com/photos/162140/duckling-birds-yellow-fluffy-162140.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/660266/pexels-photo-660266.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/209035/pexels-photo-209035.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
         "de": "Ente",
         "ja": "アヒル",
@@ -81,11 +105,15 @@
         "it": "Anatra",
         "fr": "Canard",
         "es": "Pato",
-        "zh": "鸭"
+        "zh": "鸭子"
       }
     },
     {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/86594/goat-animal-horns-black-and-white-86594.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/144240/goat-lamb-little-grass-144240.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/1011630/pexels-photo-1011630.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
         "de": "Ziege",
         "ja": "ヤギ",
@@ -97,7 +125,11 @@
       }
     },
     {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/208821/pexels-photo-208821.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/598751/pexels-photo-598751.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/584177/pexels-photo-584177.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
         "de": "Esel",
         "ja": "ロバ",
@@ -109,19 +141,11 @@
       }
     },
     {
-      "urls": [],
-      "translations": {
-        "de": "Hahn",
-        "ja": "雄鶏",
-        "en": "Rooster",
-        "it": "Gallo",
-        "fr": "Coq",
-        "es": "Gallo",
-        "zh": "公鸡"
-      }
-    },
-    {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/5145/animal-easter-chick-chicken.jpg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/55834/chicks-spring-chicken-plumage-55834.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/583677/pexels-photo-583677.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
         "de": "Küken",
         "ja": "ひよこ",
@@ -133,67 +157,27 @@
       }
     },
     {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/34770/haan-crows-mohawk.jpg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/458825/pexels-photo-458825.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/1128574/pexels-photo-1128574.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
-        "de": "Stute",
-        "ja": "メア",
-        "en": "Mare",
-        "it": "Giumenta",
-        "fr": "Jument",
-        "es": "Yegua",
-        "zh": "母马"
+        "de": "Hahn",
+        "ja": "鶏",
+        "en": "Rooster",
+        "it": "Gallo",
+        "fr": "Coq",
+        "es": "Gallo",
+        "zh": "公鸡"
       }
     },
     {
-      "urls": [],
-      "translations": {
-        "de": "Meerschweinchen",
-        "ja": "モルモット",
-        "en": "Guinea Pig",
-        "it": "Porcellino d'India",
-        "fr": "Cochon d'Inde",
-        "es": "Cobaya",
-        "zh": "豚鼠"
-      }
-    },
-    {
-      "urls": [],
-      "translations": {
-        "de": "Hähnchen",
-        "ja": "チキン",
-        "en": "Chick",
-        "it": "Pollo",
-        "fr": "Poulet",
-        "es": "Pollo",
-        "zh": "小鸡"
-      }
-    },
-    {
-      "urls": [],
-      "translations": {
-        "de": "Truthahn",
-        "ja": "七面鳥",
-        "en": "Turkey",
-        "it": "Tacchino",
-        "fr": "Dindon",
-        "es": "Pavo",
-        "zh": "火鸡"
-      }
-    },
-    {
-      "urls": [],
-      "translations": {
-        "de": "Esel",
-        "ja": "ロバ",
-        "en": "Donkey",
-        "it": "Asino",
-        "fr": "Ane",
-        "es": "Burro",
-        "zh": "驴"
-      }
-    },
-    {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/66863/goose-water-bird-nature-bird-66863.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/57406/greater-snow-goose-goose-snow-goose-wading-bird-57406.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/16602/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
         "de": "Gans",
         "ja": "ガチョウ",
@@ -205,39 +189,131 @@
       }
     },
     {
-      "urls": [],
+      "urls": [
+        "https://images.pexels.com/photos/2048865/pexels-photo-2048865.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/917595/pexels-photo-917595.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/1836580/pexels-photo-1836580.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
+      "translations": {
+        "de": "Truthahn",
+        "ja": "七面鳥",
+        "en": "Turkey",
+        "it": "Tacchino",
+        "fr": "Dindon",
+        "es": "Pavo",
+        "zh": "火鸡"
+      }
+    },
+    {
+      "urls": [
+        "https://images.pexels.com/photos/375510/pexels-photo-375510.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/1405930/pexels-photo-1405930.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
+      "translations": {
+        "de": "Hähnchen",
+        "ja": "鶏肉",
+        "en": "Chicken",
+        "it": "Pollo",
+        "fr": "Poulet",
+        "es": "Pollo",
+        "zh": "鸡肉"
+      }
+    },
+    {
+      "urls": [
+        "https://images.pexels.com/photos/63853/guinea-pig-sea-pig-house-cute-guinea-pig-house-63853.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/1093126/pexels-photo-1093126.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/174666/pexels-photo-174666.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
+      "translations": {
+        "de": "Meerschweinchen",
+        "ja": "モルモット",
+        "en": "Guinea Pig",
+        "it": "Porcellino d'India",
+        "fr": "Cochon d'Inde",
+        "es": "Cobayo",
+        "zh": "豚鼠"
+      }
+    },
+    {
+      "urls": [
+        "https://images.pexels.com/photos/943457/pexels-photo-943457.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/297201/pexels-photo-297201.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/460991/pexels-photo-460991.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
+      "translations": {
+        "de": "Pony",
+        "ja": "ポニー",
+        "en": "Pony",
+        "it": "Pony",
+        "fr": "Poney",
+        "es": "Poni",
+        "zh": "小马"
+      }
+    },
+    {
+      "urls": [
+        "https://images.pexels.com/photos/6845638/pexels-photo-6845638.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/6618592/pexels-photo-6618592.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/326012/pexels-photo-326012.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
+      "translations": {
+        "de": "Hase",
+        "ja": "ウサギ",
+        "en": "Rabbit",
+        "it": "Coniglio",
+        "fr": "Lapin",
+        "es": "Conejo",
+        "zh": "兔子"
+      }
+    },
+    {
+      "urls": [
+        "https://images.pexels.com/photos/27778135/pexels-photo-27778135.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/4921204/pexels-photo-4921204.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/97317/pexels-photo-97317.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
+      "translations": {
+        "de": "Hütehund",
+        "ja": "牧羊犬",
+        "en": "Sheepdog",
+        "it": "Pastore tedesco",
+        "fr": "Chien de berger",
+        "es": "Perro pastor",
+        "zh": "牧羊犬"
+      }
+    },
+    {
+      "urls": [
+        "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
+      "translations": {
+        "de": "Katze",
+        "ja": "猫",
+        "en": "Cat",
+        "it": "Gatto",
+        "fr": "Chat",
+        "es": "Gato",
+        "zh": "猫"
+      }
+    },
+    {
+      "urls": [
+        "https://images.pexels.com/photos/2104066/pexels-photo-2104066.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/11572408/pexels-photo-11572408.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "https://images.pexels.com/photos/15645686/pexels-photo-15645686.jpeg?auto=compress&cs=tinysrgb&h=350"
+      ],
       "translations": {
         "de": "Legende Henne",
         "ja": "産卵鶏",
         "en": "Laying Hen",
-        "it": "Gallina che depone",
+        "it": "Gallina ovaia",
         "fr": "Poule pondeuse",
         "es": "Gallina ponedora",
-        "zh": "下蛋母鸡"
-      }
-    },
-    {
-      "urls": [],
-      "translations": {
-        "de": "Kampfhahn",
-        "ja": "闘鶏",
-        "en": "Fighting Cock",
-        "it": "Gallo da combattimento",
-        "fr": "Coq de combat",
-        "es": "Gallo de pelea",
-        "zh": "斗鸡"
-      }
-    },
-    {
-      "urls": [],
-      "translations": {
-        "de": "Wassermöwe",
-        "ja": "水の鶏",
-        "en": "Water Hen",
-        "it": "Gallina d'acqua",
-        "fr": "Poule d'eau",
-        "es": "Gallina de agua",
-        "zh": "水母鸡"
+        "zh": "产蛋母鸡"
       }
     }
   ]

@@ -19,6 +19,8 @@ public class ThemeService {
     private ThemeRepository themeRepository;
     @Autowired
     private OpenAIService openAIService;
+    @Autowired
+    private PexelsAIService pexelsAIService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     // 🔹 Récupère tous les thèmes sans charger les éléments
@@ -43,8 +45,6 @@ public class ThemeService {
     // 🔥 Crée un thème en vérifiant d'abord avec OpenAI si le nom est valide
     public ThemeData createTheme(String nameTheme) {
 
-        //System.out.println("Demande de création d'un thème avec le nom : " + nameTheme);
-
         List<ThemeData> existingThemes = themeRepository.findAll();
 
         if (!existingThemes.isEmpty()){
@@ -55,7 +55,6 @@ public class ThemeService {
                         similarityResponse.getSimilarThemeName(),
                         similarityResponse.getSimilarThemeDescription()
                 );
-
             }
         }
 
@@ -66,12 +65,10 @@ public class ThemeService {
             JsonNode rootNode = objectMapper.readTree(generatedJson);
 
             String parsedNameTheme = rootNode.get("nameTheme").asText();
-
             String description = rootNode.has("description") ? rootNode.get("description").asText() : "";
 
             List<String> availableLanguages = new ArrayList<>();
-            rootNode.get("availableLanguages").forEach(lang ->
-                    availableLanguages.add(lang.asText()));
+            rootNode.get("availableLanguages").forEach(lang -> availableLanguages.add(lang.asText()));
 
             List<ThemeElement> elements = new ArrayList<>();
             for (JsonNode elementNode : rootNode.get("elements")) {
@@ -79,10 +76,15 @@ public class ThemeService {
                 elementNode.get("translations").fields().forEachRemaining(entry ->
                         translations.put(entry.getKey(), entry.getValue().asText()));
 
-                elements.add(new ThemeElement(new ArrayList<>(), translations));
+                // On utilise la traduction en français comme requête pour l'API Pexels
+                String query = translations.get("en");
+                List<String> imageUrls = pexelsAIService.searchImages(query);
+
+                // Création de l'élément avec les URLs récupérées
+                elements.add(new ThemeElement(imageUrls, translations));
             }
 
-            // 🔹 Création et sauvegarde du thème
+            // Création et sauvegarde du thème
             ThemeData newTheme = new ThemeData(null, parsedNameTheme, description, availableLanguages, elements);
             return themeRepository.save(newTheme);
 

@@ -173,6 +173,7 @@
                 Génère environ 20 éléments en respectant strictement cette structure.
                 Assure-toi que les traductions sont **exactes et naturelles** dans chaque langue.
                 Ne mets **aucun lien d’image** dans la réponse, mais garde le champ "urls" vide.
+                Je veux des mots simple et tu dois limiter le plus possible les mot composés.
                 **Ne mets que du JSON valide, rien d’autre !**
                 """.formatted(theme);
     

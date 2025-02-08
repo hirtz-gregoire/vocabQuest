@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import {ThemeData} from "@/app/utils/utils";
-import {gallery} from "@/app/utils/gallery";
+import { ThemeData } from "@/app/utils/utils";
+import { gallery } from "@/app/utils/gallery";
 
 export default function Mode1Page() {
     const [data, setData] = useState<ThemeData | null>(null);
@@ -9,7 +9,8 @@ export default function Mode1Page() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch("/api/theme/animaux") // ✅ Vérifie bien cette URL
+        // Remplacez l'URL par celle du thème détaillé qui contient le tableau "elements"
+        fetch("http://localhost:8080/api/themes/67a745f377de725bb217f608")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
@@ -35,36 +36,44 @@ export default function Mode1Page() {
             <h1>Galerie - {data.nameTheme}</h1>
             {gallery({
                 gallery: data,
-                styles: {gallery: styles.gallery, card: styles.card, image: styles.image},
+                styles: { gallery: styles.gallery, card: styles.card, image: styles.image },
                 showNames: true,
                 cardCount: 5,
                 randomize: true,
-                selectedLanguage: "es",
+                selectedLanguage: "fr",
                 cardEvents: {
-                    // TODO
-                    // Remove theses example events
                     onMouseOver: (event) => {
                         event.currentTarget.style.backgroundColor = "blue";
                     },
                     onMouseOut: (event) => {
                         event.currentTarget.style.backgroundColor = "";
-                    }
-                }
+                    },
+                },
             })}
         </div>
     );
 }
 
 const styles: Record<string, React.CSSProperties> = {
-    container: {textAlign: "center", padding: "20px"},
-    gallery: {display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center"},
+    container: { textAlign: "center", padding: "20px" },
+    gallery: {
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "20px",
+        justifyContent: "center",
+    },
     card: {
         backgroundColor: "#f9f9f9",
         padding: "15px",
         borderRadius: "10px",
         textAlign: "center",
         width: "220px",
-        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
     },
-    image: {width: "200px", height: "200px", borderRadius: "10px", objectFit: "cover"}
+    image: {
+        width: "200px",
+        height: "200px",
+        borderRadius: "10px",
+        objectFit: "cover",
+    },
 };
