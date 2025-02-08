@@ -58,12 +58,7 @@ export default function Mode1Page() {
 
     const handleThemeChange = (selectedTheme: string) => {
         const theme = (themes??[]).find((theme) => theme.id === selectedTheme);
-
-        if (theme) {
-            setSelectedTheme(theme);
-        } else {
-            setSelectedTheme(null);
-        }
+        setSelectedTheme(theme ? theme : null)
     };
 
     const themesOptions = (themes ?? []).map((theme) => ({
