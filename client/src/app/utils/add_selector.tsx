@@ -15,12 +15,15 @@ export const add_selector = ({
     const onAdd = () => {
         // TODO : Ask the API to generate a new option
         // TODO : Visual cues for when the API is loading the thingy
+        let request: string | null = "";
         switch (apiToUse) {
             case APIS.Language:
-                console.log("Adding a new language !")
+                request = prompt("Insérez la langue à ajouter")
+                console.log("Adding the language : " + request)
                 break;
             case APIS.Theme:
-                console.log("Adding a new theme !")
+                request = prompt("Insérez le thème à ajouter")
+                console.log("Adding the theme : " + request)
                 break;
         }
         // TODO : Wait for the API to create the option then call onThemeSelected
@@ -31,8 +34,8 @@ export const add_selector = ({
 
         if (data.value === "add") {
             return (
-                <div ref={innerRef} {...innerProps} className={"add-button"}>
-                    <img src={"https://cdn-icons-png.flaticon.com/512/32/32339.png"} style={plusStyle}/>
+                <div ref={innerRef} {...innerProps} className={"add-button"} style={buttonStyle}>
+                    <img src={"https://cdn-icons-png.flaticon.com/512/32/32339.png"} style={plusImgStyle}/>
                 </div>
             );
         }
@@ -61,10 +64,24 @@ export const add_selector = ({
 const selectStyle: StylesConfig = {
     control: (provided) => ({
         ...provided,
+        marginTop: "10px",
+        marginBottom: "10px",
+        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+        width: "80%",
+        margin: "10px auto 10px auto",
+    }),
+    menu: (provided) => ({
+        ...provided,
+        width: "80%",
+        margin: "0 10%",
     }),
 };
 
-const plusStyle: React.CSSProperties = {
+const buttonStyle: React.CSSProperties = {
+    width: "98%",
+}
+
+const plusImgStyle: React.CSSProperties = {
     maxWidth: "1.5em",
     margin: "0px",
     padding: "0px",

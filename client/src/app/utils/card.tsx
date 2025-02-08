@@ -21,9 +21,14 @@ export const card = ({
         card.urls[Math.floor(Math.random() * card.urls.length)];
     return (
         <div key={key} style={styles.card} {...events}>
-            {showNames !== false && <h3>{translation}</h3>}
+            {showNames !== false && <h3 style={titleStyle}>{translation}</h3>}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={randomUrl} alt={translation} style={styles.image} />
         </div>
     );
 };
+
+const titleStyle: React.CSSProperties = {
+    margin: "0px",
+    marginBottom: "5px"
+}

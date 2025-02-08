@@ -3,12 +3,15 @@ import {useEffect, useState} from "react";
 import {APIS, ThemeData} from "@/app/utils/utils";
 import {gallery} from "@/app/utils/gallery";
 import {add_selector} from "@/app/utils/add_selector";
+import Link from "next/link";
+import Switch from "react-switch";
 
 export default function Mode1Page() {
     const [themes, setThemes] = useState<ThemeData[] | null>(null);
     const [selectedTheme, setSelectedTheme] = useState<ThemeData | null>(null);
     const [selectedLanguage, setSelectedLanguage] = useState<string>("");
 
+    const [showNames, setShowNames] = useState<boolean>(true);
     const [data, setData] = useState<ThemeData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -74,19 +77,30 @@ export default function Mode1Page() {
 
     return (
         <div style={styles.container}>
+            <Link href="/">
+                <img className={"return-button"} style={styles.return}
+                     src={"https://cdn-icons-png.flaticon.com/512/6392/6392143.png"}/>
+            </Link>
             <h1>Galerie - {data.nameTheme}</h1>
             <p>{data.description}</p>
             {add_selector({options: themesOptions, apiToUse: APIS.Theme, onOptionSelected: handleThemeChange})}
-            {add_selector({options: languageOptions, apiToUse: APIS.Language, onOptionSelected: (selectedLanguage: string) => setSelectedLanguage(selectedLanguage)})}
+            {add_selector({
+                options: languageOptions,
+                apiToUse: APIS.Language,
+                onOptionSelected: (selectedLanguage: string) => setSelectedLanguage(selectedLanguage)
+            })}
+            <label style={styles.toggle}>
+                <span>Afficher les noms</span>
+                <Switch onChange={(checked)=> setShowNames(checked)} checked={showNames}/>
+            </label>
             {gallery({
                 gallery: data,
-                styles: { gallery: styles.gallery, card: styles.card, image: styles.image },
-                showNames: true,
-                cardCount: 5,
+                styles: {gallery: styles.gallery, card: styles.card, image: styles.image},
+                showNames: showNames,
+                cardCount: 10000,
                 randomize: true,
                 selectedLanguage: selectedLanguage,
                 cardEvents: {
-                    // TODO : Remove theses example events
                     onMouseOver: (event) => {
                         event.currentTarget.style.backgroundColor = "blue";
                     },
@@ -100,7 +114,7 @@ export default function Mode1Page() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-    container: { textAlign: "center", padding: "20px" },
+    container: {textAlign: "center", padding: "20px"},
     gallery: {
         display: "flex",
         flexWrap: "wrap",
@@ -109,16 +123,28 @@ const styles: Record<string, React.CSSProperties> = {
     },
     card: {
         backgroundColor: "#f9f9f9",
-        padding: "15px",
+        padding: "0.7vmax",
         borderRadius: "10px",
         textAlign: "center",
-        width: "220px",
-        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.2)",
     },
     image: {
-        width: "200px",
-        height: "200px",
+        width: "12vmax",
+        height: "12vmax",
         borderRadius: "10px",
         objectFit: "cover",
     },
+    return: {
+        width: "60px",
+        height: "60px",
+        position: "absolute",
+        left: "15px",
+        top: "15px"
+    },
+    toggle: {
+        display: "flex",
+        alignItems: "center",
+        gap: "8px",
+        justifyContent: "center"
+    }
 };
