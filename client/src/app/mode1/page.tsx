@@ -5,6 +5,9 @@ import {gallery} from "@/app/utils/gallery";
 import {add_selector} from "@/app/utils/add_selector";
 import Link from "next/link";
 import Switch from "react-switch";
+import {speechAPI} from "@/app/utils/speechAPI";
+import {CardProps} from "@/app/utils/card";
+import {useRouter} from "next/router";
 
 export default function Mode1Page() {
     const [themes, setThemes] = useState<ThemeData[] | null>(null);
@@ -16,6 +19,18 @@ export default function Mode1Page() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    // Check for landscape mode
+    const [matches, setMatches] = useState(
+        window.matchMedia("(orientation:landscape").matches
+    )
+
+    useEffect(() => {
+        window
+            .matchMedia("(orientation:landscape)")
+            .addEventListener('change', e => setMatches( e.matches ));
+    }, []);
+
+    // Load theme data
     useEffect(() => {
         if(selectedTheme === null) return;
 
@@ -37,6 +52,7 @@ export default function Mode1Page() {
             });
     }, [selectedTheme]);
 
+    // Load list of themes
     useEffect(() => {
         fetch("/api/themes") //TODO : use real API
             .then((res) => {
@@ -55,9 +71,26 @@ export default function Mode1Page() {
             });
     }, []);
 
-    if (loading) return <h1>Chargement des images...</h1>;
-    if (error) return <h1>Erreur : {error}</h1>;
-    if (!data) return <h1>Aucune donnée trouvée</h1>;
+    // Handle special cases
+    let errorMessage = "";
+    if (!data) errorMessage = "Aucune donnée trouvée";
+    if (loading) errorMessage = "Chargement des images...";
+    if (error) errorMessage = `Erreur : ${error}`;
+    if (!matches) errorMessage = `Veuillez tourner votre navigateur en mode paysage.`;
+
+    if(errorMessage !== "") return (
+        <div>
+            <Link href="/">
+                <img className={"return-button"} style={styles.return}
+                     src={"https://cdn-icons-png.flaticon.com/512/6392/6392143.png"}/>
+            </Link>
+            <h1 style={styles.errorText}>{errorMessage}</h1>
+        </div>
+    );
+    if (!data) return "We are pleasing the compiler..";
+
+    // The actual page
+    speechAPI.setLanguage(selectedLanguage)
 
     const handleThemeChange = (selectedTheme: string) => {
         const theme = (themes??[]).find((theme) => theme.id === selectedTheme);
@@ -77,7 +110,7 @@ export default function Mode1Page() {
 
     return (
         <div style={styles.container}>
-            <Link href="/">
+            <Link href="/" onClick={()=>{speechAPI.synth.cancel();}}>
                 <img className={"return-button"} style={styles.return}
                      src={"https://cdn-icons-png.flaticon.com/512/6392/6392143.png"}/>
             </Link>
@@ -87,7 +120,9 @@ export default function Mode1Page() {
             {add_selector({
                 options: languageOptions,
                 apiToUse: APIS.Language,
-                onOptionSelected: (selectedLanguage: string) => setSelectedLanguage(selectedLanguage)
+                onOptionSelected: (selectedLanguage: string) => {
+                    setSelectedLanguage(selectedLanguage)
+                }
             })}
             <label style={styles.toggle}>
                 <span>Afficher les noms</span>
@@ -101,11 +136,18 @@ export default function Mode1Page() {
                 randomize: true,
                 selectedLanguage: selectedLanguage,
                 cardEvents: {
+                    onClick: (event, card: CardProps) => {
+                        const translation = card.card.translations[card.language] || "Non traduit";
+                        speechAPI.synth.cancel();
+                        speechAPI.requestSynth(translation);
+                    },
                     onMouseOver: (event) => {
-                        event.currentTarget.style.backgroundColor = "blue";
+                        const targetElement = event.currentTarget as HTMLElement;
+                        targetElement.style.backgroundColor = "blue";
                     },
                     onMouseOut: (event) => {
-                        event.currentTarget.style.backgroundColor = "";
+                        const targetElement = event.currentTarget as HTMLElement;
+                        targetElement.style.backgroundColor = "";
                     },
                 },
             })}
@@ -146,5 +188,8 @@ const styles: Record<string, React.CSSProperties> = {
         alignItems: "center",
         gap: "8px",
         justifyContent: "center"
+    },
+    errorText: {
+        marginTop: "70px",
     }
 };

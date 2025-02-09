@@ -1,13 +1,16 @@
 import Link from "next/link";
 
 export default function HomePage() {
+
     return (
         <div style={styles.container}>
-            <h1>Bienvenue sur mon application</h1>
+            <h1>Bienvenue sur vocabQuest !</h1>
+            <p>Apprendre les langues en s&#39;amusant</p>
             <div style={styles.buttons}>
-                <Link href="/mode1" style={styles.button}>Mode 1 - Galerie</Link>
-                <button style={styles.button} disabled>Mode 2 - (À venir)</button>
-                <button style={styles.button} disabled>Mode 3 - (À venir)</button>
+                <Link href="/mode1" style={styles.button}>Galerie</Link>
+                <Link href="/mode1" style={styles.button}>Compréhension (todo)</Link>
+                <Link href="/mode1" style={styles.button}>Prononciation (todo)</Link>
+                <Link href="/mode1" style={redButton}>Paramètres audio (todo)</Link>
             </div>
         </div>
     );
@@ -36,3 +39,9 @@ const styles: Record<string, React.CSSProperties> = {
         display: "inline-block",
     }
 };
+
+const redButton = {
+    ...styles.button,
+    backgroundColor: "#00c6f3",
+    color:"black"
+}

@@ -1,5 +1,5 @@
 import { EventHandlers, shuffle, ThemeData } from "@/app/utils/utils";
-import { card } from "@/app/utils/card";
+import {card, CardEventHandlers} from "@/app/utils/card";
 
 export const gallery = ({
                             gallery,
@@ -22,7 +22,7 @@ export const gallery = ({
     randomize?: boolean; // Default : non
     showNames?: boolean; // Default : oui
     events?: EventHandlers;
-    cardEvents?: EventHandlers;
+    cardEvents?: CardEventHandlers;
 }) => {
     let cards = gallery.elements;
     if (randomize === true) cards = shuffle(cards);
