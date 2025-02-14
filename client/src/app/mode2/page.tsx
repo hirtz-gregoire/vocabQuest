@@ -1,12 +1,13 @@
 "use client";
 import {useEffect, useState} from "react";
-import {APIS, ThemeData} from "@/app/utils/utils";
+import {APIS, shuffle, ThemeData} from "@/app/utils/utils";
 import {gallery} from "@/app/utils/gallery";
 import {add_selector} from "@/app/utils/add_selector";
 import Link from "next/link";
 import Switch from "react-switch";
 import {speechAPI} from "@/app/utils/speechAPI";
 import {CardProps} from "@/app/utils/card";
+import {styles} from "@/app/mode1/page";
 
 export default function Mode1Page() {
     const [themes, setThemes] = useState<ThemeData[] | null>(null);
@@ -18,7 +19,8 @@ export default function Mode1Page() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    // Check for landscape mode
+    const [resetKey, setResetKey] = useState<number>(0);
+
     const [isinLandscape, setIsinLandscape] = useState(
         window.matchMedia("(orientation:landscape)").matches
     )
@@ -90,6 +92,9 @@ export default function Mode1Page() {
 
     // The actual page
     speechAPI.setLanguage(selectedLanguage)
+    const cardCount = 12;
+    const selectedCard = Math.round(Math.random()*12);
+    data.elements = shuffle(data.elements).slice(0, cardCount);
 
     const handleThemeChange = (selectedTheme: string) => {
         const theme = (themes??[]).find((theme) => theme.id === selectedTheme);
@@ -127,19 +132,19 @@ export default function Mode1Page() {
                 <span>Afficher les noms</span>
                 <Switch onChange={(checked)=> setShowNames(checked)} checked={showNames}/>
             </label>
+            <button onClick={()=> speechAPI.requestSynth(data?.elements[selectedCard].translations[selectedLanguage])}>
+                Prononcer le mot
+            </button>
             {gallery({
                 gallery: data,
                 styles: {gallery: styles.gallery, card: styles.card, image: styles.image},
                 showNames: showNames,
-                cardCount: 10000,
+                cardCount: cardCount,
                 randomize: true,
                 selectedLanguage: selectedLanguage,
+                setResetKey: () => setResetKey(prevKey => prevKey + 1),
+                goodCard: selectedCard,
                 cardEvents: {
-                    onClick: (event, card: CardProps) => {
-                        const translation = card.card.translations[card.language] || "Non traduit";
-                        speechAPI.synth.cancel();
-                        speechAPI.requestSynth(translation);
-                    },
                     onMouseOver: (event) => {
                         const targetElement = event.currentTarget as HTMLElement;
                         targetElement.style.backgroundColor = "blue";
@@ -153,42 +158,3 @@ export default function Mode1Page() {
         </div>
     );
 }
-
-export const styles: Record<string, React.CSSProperties> = {
-    container: {textAlign: "center", padding: "20px"},
-    gallery: {
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "0.9vmax",
-        justifyContent: "center",
-    },
-    card: {
-        backgroundColor: "#f9f9f9",
-        padding: "0.7vmax",
-        borderRadius: "10px",
-        textAlign: "center",
-        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.2)",
-    },
-    image: {
-        width: "12vmax",
-        height: "12vmax",
-        borderRadius: "10px",
-        objectFit: "cover",
-    },
-    return: {
-        width: "60px",
-        height: "60px",
-        position: "absolute",
-        left: "15px",
-        top: "15px"
-    },
-    toggle: {
-        display: "flex",
-        alignItems: "center",
-        gap: "8px",
-        justifyContent: "center"
-    },
-    errorText: {
-        marginTop: "70px",
-    }
-};
