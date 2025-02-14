@@ -1,6 +1,5 @@
 import { EventHandlers, shuffle, ThemeData } from "@/app/utils/utils";
 import {Card, CardEventHandlers} from "@/app/utils/card";
-import {Dispatch, SetStateAction} from "react";
 
 export const gallery = ({
                             gallery,
