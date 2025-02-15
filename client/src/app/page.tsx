@@ -9,8 +9,7 @@ export default function HomePage() {
             <div style={styles.buttons}>
                 <Link href="/mode1" style={styles.button}>Galerie</Link>
                 <Link href="/mode2" style={styles.button}>Compréhension</Link>
-                <Link href="/mode1" style={styles.button}>Prononciation (todo)</Link>
-                <Link href="/mode1" style={redButton}>Paramètres audio (todo)</Link>
+                <Link href="/mode3" style={styles.button}>Prononciation</Link>
             </div>
         </div>
     );

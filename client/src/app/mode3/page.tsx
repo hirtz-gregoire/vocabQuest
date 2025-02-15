@@ -1,6 +1,6 @@
 "use client";
 import {useEffect, useState} from "react";
-import {APIS, shuffle, ThemeData} from "@/app/utils/utils";
+import {APIS, shuffle, ThemeData, ThemeElement} from "@/app/utils/utils";
 import {gallery} from "@/app/utils/gallery";
 import {add_selector} from "@/app/utils/add_selector";
 import Link from "next/link";
@@ -8,17 +8,17 @@ import Switch from "react-switch";
 import {speechAPI} from "@/app/utils/speechAPI";
 import {styles} from "@/app/mode1/page";
 
-export default function Mode2Page() {
+export default function Mode3Page() {
     const [themes, setThemes] = useState<ThemeData[] | null>(null);
     const [selectedTheme, setSelectedTheme] = useState<ThemeData | null>(null);
     const [selectedLanguage, setSelectedLanguage] = useState<string>("");
+    const [displayedText, setDisplayedText] = useState<string>("");
 
     const [showNames, setShowNames] = useState<boolean>(true);
     const [data, setData] = useState<ThemeData | null>(null);
+    const [elements, setElements] = useState<ThemeElement[] | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-
-    const [resetKey, setResetKey] = useState<number>(0);
 
     const [isinLandscape, setIsinLandscape] = useState(
         window.matchMedia("(orientation:landscape)").matches
@@ -44,6 +44,7 @@ export default function Mode2Page() {
             })
             .then((data: ThemeData) => {
                 setData(data);
+                setElements(shuffle(data.elements).slice(0, 1));
                 setLoading(false);
             })
             .catch((error) => {
@@ -77,6 +78,7 @@ export default function Mode2Page() {
     if (loading) errorMessage = "Chargement des images...";
     if (error) errorMessage = `Erreur : ${error}`;
     if (!isinLandscape) errorMessage = `Veuillez tourner votre navigateur en mode paysage.`;
+    if (!speechAPI.recognition) errorMessage = "Reconnaissance vocal non supporté sur ce navigateur.";
 
     if(errorMessage !== "") return (
         <div>
@@ -91,9 +93,34 @@ export default function Mode2Page() {
 
     // The actual page
     speechAPI.setLanguage(selectedLanguage)
-    const cardCount = 12;
-    const selectedCard = Math.round(Math.random()*12);
-    data.elements = shuffle(data.elements).slice(0, cardCount);
+
+    speechAPI.setOnRecognitionResult(
+        (event) => {
+            document.body.style.transition = "background-color 0.4s ease-in-out";
+            const spokenText = event.results[0][0].transcript.trim().normalize("NFC");
+            const expectedText = data.elements[0].translations[selectedLanguage].toLowerCase().trim().normalize("NFC");
+
+            if(spokenText === expectedText) {
+                document.body.style.backgroundColor = "lightgreen";
+                speechAPI.synth.cancel();
+                speechAPI.setLanguage("fr");
+                speechAPI.requestSynth("Bonne réponse !");
+                setElements(shuffle(data.elements).slice(0, 1));
+            }
+            else {
+                document.body.style.backgroundColor = "#FFCCCB";
+            }
+
+            setTimeout(
+                () => {
+                    document.body.style.backgroundColor = "white";
+                }, 400
+            )
+
+            setDisplayedText(event.results[0][0].transcript);
+        }
+    )
+    speechAPI.startRecognition();
 
     const handleThemeChange = (selectedTheme: string) => {
         const theme = (themes??[]).find((theme) => theme.id === selectedTheme);
@@ -113,7 +140,9 @@ export default function Mode2Page() {
 
     return (
         <div style={styles.container}>
-            <Link href="/" onClick={()=>{speechAPI.synth.cancel();}}>
+            <Link href="/" onClick={() => {
+                speechAPI.synth.cancel();
+            }}>
                 <img className={"return-button"} style={styles.return}
                      src={"https://cdn-icons-png.flaticon.com/512/6392/6392143.png"}/>
             </Link>
@@ -129,34 +158,36 @@ export default function Mode2Page() {
             })}
             <label style={styles.toggle}>
                 <span>Afficher les noms</span>
-                <Switch onChange={(checked)=> setShowNames(checked)} checked={showNames}/>
+                <Switch onChange={(checked) => setShowNames(checked)} checked={showNames}/>
             </label>
-            <button style={{marginBottom: "10px"}} onClick={()=> {
+            <button style={{marginBottom: "10px"}} onClick={() => {
                 speechAPI.synth.cancel();
-                speechAPI.requestSynth(data?.elements[selectedCard].translations[selectedLanguage]);
+                speechAPI.requestSynth(data?.elements[0].translations[selectedLanguage]);
             }}>
                 Prononcer le mot
             </button>
             {gallery({
                 gallery: data,
-                styles: {gallery: styles.gallery, card: styles.card, image: styles.image},
+                styles: {gallery: styles.gallery, card: styles.card, image: {
+                        width: "20vmax",
+                        height: "20vmax",
+                        borderRadius: "10px",
+                        objectFit: "cover",
+                    }},
                 showNames: showNames,
-                cardCount: cardCount,
+                cardCount: 1,
                 randomize: true,
                 selectedLanguage: selectedLanguage,
-                setResetKey: () => setResetKey(prevKey => prevKey + 1),
-                goodCard: selectedCard,
-                cardEvents: {
-                    onMouseOver: (event) => {
-                        const targetElement = event.currentTarget as HTMLElement;
-                        targetElement.style.backgroundColor = "blue";
-                    },
-                    onMouseOut: (event) => {
-                        const targetElement = event.currentTarget as HTMLElement;
-                        targetElement.style.backgroundColor = "";
-                    },
-                },
             })}
+            <input
+                type="text"
+                name="prononciation"
+                placeholder={"Prononcez le mot"}
+                size={40}
+                readOnly={true}
+                style={{marginTop: "20px"}}
+                value={displayedText}
+            />
         </div>
     );
 }
