@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*")
@@ -29,7 +30,8 @@ public class ThemeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ThemeData createTheme(@RequestBody String userRequest) {
-        return themeService.createTheme(userRequest);
+    public ThemeData createTheme(@RequestBody Map<String, String> requestBody) {
+        String themeName = requestBody.get("message");
+        return themeService.createTheme(themeName);
     }
 }

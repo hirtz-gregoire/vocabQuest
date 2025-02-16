@@ -1,4 +1,4 @@
-import Select, {components, StylesConfig} from "react-select";
+import Select, {StylesConfig} from "react-select";
 import {APIS} from "@/app/utils/utils";
 
 export const add_selector = ({
@@ -10,38 +10,7 @@ export const add_selector = ({
     onOptionSelected: (selectedTheme: string) => void,
     apiToUse: APIS
 }) => {
-    options.push({ value: "add", label: "+" })
-
-    const onAdd = () => {
-        // TODO : Ask the API to generate a new option
-        // TODO : Visual cues for when the API is loading the thingy
-        let request: string | null = "";
-        switch (apiToUse) {
-            case APIS.Language:
-                request = prompt("Insérez la langue à ajouter")
-                console.log("Adding the language : " + request)
-                break;
-            case APIS.Theme:
-                request = prompt("Insérez le thème à ajouter")
-                console.log("Adding the theme : " + request)
-                break;
-        }
-        // TODO : Wait for the API to create the option then call onThemeSelected
-    }
-
-    const customizeOptions = (props: any) => {
-        const { data, innerRef, innerProps } = props;
-
-        if (data.value === "add") {
-            return (
-                <div ref={innerRef} {...innerProps} className={"add-button"} style={buttonStyle}>
-                    <img src={"https://cdn-icons-png.flaticon.com/512/32/32339.png"} style={plusImgStyle}/>
-                </div>
-            );
-        }
-        return <components.Option {...props} />;
-    };
-
+    // Simplified selector without the "+" option
     return (
         <Select
             styles={selectStyle}
@@ -49,15 +18,9 @@ export const add_selector = ({
             placeholder="None Selected"
             defaultValue={options[0]}
             onChange={(selectedOption: any) => {
-                if (selectedOption.value === "add") {
-                    onAdd();
-                } else {
-                    onOptionSelected(selectedOption.value)
-                }
+                onOptionSelected(selectedOption.value);
             }}
-            components={{ Option: customizeOptions }}
         />
-
     )
 };
 
@@ -76,13 +39,3 @@ const selectStyle: StylesConfig = {
         margin: "0 10%",
     }),
 };
-
-const buttonStyle: React.CSSProperties = {
-    width: "98%",
-}
-
-const plusImgStyle: React.CSSProperties = {
-    maxWidth: "1.5em",
-    margin: "0px",
-    padding: "0px",
-}

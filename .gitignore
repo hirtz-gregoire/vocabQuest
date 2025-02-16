@@ -4,13 +4,6 @@
 *.ipr
 *.iws
 
-# Environment files (⚠️ Ne jamais commit des secrets !)
-.env
-.env.local
-.env.development.local
-.env.production.local
-.env.test.local
-
 # OS-specific files
 Thumbs.db
 .DS_Store

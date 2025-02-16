@@ -35,7 +35,7 @@ export default function Mode2Page() {
         if(selectedTheme === null) return;
 
         setLoading(true);
-        fetch(`/api/theme/${selectedTheme.id}`) //TODO : use real API
+        fetch(`/api/theme/${selectedTheme.id}`)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
@@ -54,7 +54,7 @@ export default function Mode2Page() {
 
     // Load list of themes
     useEffect(() => {
-        fetch("/api/themes") //TODO : use real API
+        fetch("/api/themes")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
@@ -63,8 +63,12 @@ export default function Mode2Page() {
             })
             .then((data: ThemeData[]) => {
                 setThemes(data);
-                setSelectedTheme(data[0]);
-                setSelectedLanguage(data[0].availableLanguages[0])
+                if (data.length > 0) {
+                    setSelectedTheme(data[0]);
+                    if (data[0].availableLanguages.length > 0) {
+                        setSelectedLanguage(data[0].availableLanguages[0]);
+                    }
+                }
             })
             .catch((error) => {
                 setError(error.message);
