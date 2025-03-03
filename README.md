@@ -2,6 +2,12 @@
 Grégoire HIRTZ
 Adrien NAIGEON
 
+## Accès à l'application
+
+Vous pouvez accéder à l'application de deux façons :
+- **En ligne** : [http://88.223.92.176:3000/](http://88.223.92.176:3000/)
+- **En local** : [http://localhost:3000/](http://localhost:3000/) (après démarrage avec Docker Compose)
+
 ## Présentation
 
 VocabQuest est une application interactive d'apprentissage des langues conçue pour rendre l'acquisition de vocabulaire amusante et efficace. L'application propose différents modes d'apprentissage adaptés à diverses méthodes pédagogiques, permettant aux utilisateurs d'apprendre à leur rythme et selon leur style d'apprentissage préféré.
@@ -77,8 +83,8 @@ Un fichier `.env.example` est fourni comme modèle.
 
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/hirtz-gregoire/vocabquest.git
-   cd vocabquest
+   git clone https://github.com/hirtz-gregoire/vocabQuest.git
+   cd vocabQuest
    ```
 
 2. Créez le fichier `.env` avec vos clés API (voir section Configuration requise)
@@ -89,8 +95,8 @@ Un fichier `.env.example` est fourni comme modèle.
    ```
 
 4. Accédez à l'application :
-   - Frontend : http://localhost:3000
-   - API : http://localhost:8080/api
+   - Frontend : [http://localhost:3000](http://localhost:3000)
+   - API : [http://localhost:8080/api](http://localhost:8080/api)
 
 ## Installation et démarrage manuel (développement)
 
