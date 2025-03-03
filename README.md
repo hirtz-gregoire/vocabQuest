@@ -87,7 +87,7 @@ Un fichier `.env.example` est fourni comme modèle.
    cd vocabQuest
    ```
 
-2. Créez le fichier `.env` avec vos clés API (voir section Configuration requise)
+2. Créez le fichier `.env` avec vos clés API (fournie avec le zip du rendu)
 
 3. Démarrez l'application avec Docker Compose :
    ```bash
