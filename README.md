@@ -1,4 +1,6 @@
 # VocabQuest
+Grégoire HIRTZ
+Adrien NAIGEON
 
 ## Présentation
 
@@ -17,56 +19,91 @@ VocabQuest est une application interactive d'apprentissage des langues conçue p
 ### Gestion des thèmes
 
 - **Thèmes variés** : L'application propose divers thèmes de vocabulaire (animaux, nourriture, etc.).
-- **Création de thèmes** : Les administrateurs peuvent créer de nouveaux thèmes via l'interface d'administration.
-- **Multilingue** : Chaque thème prend en charge plusieurs langues.
+- **Création automatisée de thèmes** : Les administrateurs peuvent créer de nouveaux thèmes via l'interface d'administration en saisissant simplement un nom de thème. Le système utilise l'IA pour générer automatiquement tout le contenu.
+- **Génération de contenu par IA** : L'application utilise l'API OpenAI pour générer automatiquement :
+  - Une description du thème
+  - Une liste d'éléments pertinents pour le thème
+  - Des traductions dans plusieurs langues pour chaque élément
+- **Recherche d'images automatique** : Pour chaque élément du thème, l'application utilise l'API Pexels pour rechercher et récupérer automatiquement des images pertinentes.
+- **Vérification intelligente de similarité** : Le système vérifie automatiquement si un thème similaire existe déjà, même si :
+  - Le nom contient des fautes d'orthographe
+  - La formulation ou la tournure de phrase est différente
+  - Des synonymes sont utilisés
+  Cette vérification sémantique par IA empêche la création de doublons et maintient une base de données cohérente.
+- **Multilingue** : Chaque thème prend en charge plusieurs langues, générées automatiquement lors de la création.
 
 ## Architecture technique
 
 ### Frontend
-- **Framework** : Next.js (React) avec TypeScript
-- **Styles** : CSS avec composants stylisés
+- **Framework** : Next.js 15.1.6 avec React 19 et TypeScript
+- **Styles** : Tailwind CSS et CSS modules
+- **Composants** : React Select, React Switch
 - **Fonctionnalités** :
   - Interface utilisateur réactive
   - Synthèse vocale pour la prononciation
   - Reconnaissance vocale pour les exercices de prononciation
 
 ### Backend
-- **Framework** : Java Spring Boot
+- **Framework** : Java Spring Boot 3.4.2 avec Java 23
 - **Base de données** : MongoDB
 - **Services** :
   - API RESTful pour la gestion des thèmes
   - Intégration avec OpenAI pour la génération de contenu
   - Intégration avec Pexels pour les images
 
-## Installation et démarrage
+### Infrastructure
+- **Conteneurisation** : Docker et Docker Compose
+- **Services conteneurisés** :
+  - MongoDB : Base de données NoSQL
+  - API : Backend Spring Boot
+  - Client : Frontend Next.js
+
+## Configuration requise
 
 ### Prérequis
-- Java 17+
-- Node.js 18+
 - Docker et Docker Compose
 - Un navigateur moderne (Chrome recommandé pour une meilleure compatibilité avec l'API Web Speech)
 
-### Configuration
+### Variables d'environnement
+Créez un fichier `.env` à la racine du projet avec les variables suivantes : (fournie dans le zip du rendu)
+```
+OPENAI_API_KEY=votre_clé_api_openai
+PEXELS_API_KEY=votre_clé_api_pexels
+```
+
+Un fichier `.env.example` est fourni comme modèle.
+
+## Installation et démarrage avec Docker Compose
 
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/votre-utilisateur/vocabquest.git
+   git clone https://github.com/hirtz-gregoire/vocabquest.git
    cd vocabquest
    ```
 
-2. Démarrez MongoDB avec Docker :
+2. Créez le fichier `.env` avec vos clés API (voir section Configuration requise)
+
+3. Démarrez l'application avec Docker Compose :
    ```bash
    docker-compose up -d
    ```
-   
-   Vérifiez que le conteneur MongoDB est bien démarré :
+
+4. Accédez à l'application :
+   - Frontend : http://localhost:3000
+   - API : http://localhost:8080/api
+
+## Installation et démarrage manuel (développement)
+
+### Démarrage de MongoDB
+
+1. Démarrez MongoDB avec Docker :
    ```bash
-   docker ps
+   docker-compose up -d mongodb
    ```
 
 ### Démarrage du backend
 
-1. Ouvrez un nouveau terminal et naviguez vers le dossier api :
+1. Naviguez vers le dossier api :
    ```bash
    cd api
    ```
@@ -83,7 +120,7 @@ VocabQuest est une application interactive d'apprentissage des langues conçue p
 
 ### Démarrage du frontend
 
-1. Ouvrez un nouveau terminal et naviguez vers le dossier client :
+1. Naviguez vers le dossier client :
    ```bash
    cd client
    ```
@@ -96,11 +133,15 @@ VocabQuest est une application interactive d'apprentissage des langues conçue p
 
 L'application sera accessible à l'adresse : http://localhost:3000
 
-### Résolution des problèmes courants
+## Résolution des problèmes courants
 
 - **Erreurs liées à l'API Web Speech** : Certains navigateurs, notamment Firefox, peuvent avoir des limitations avec l'API Web Speech. Pour une expérience optimale, utilisez Google Chrome.
   
 - **Erreur "Cannot read properties of undefined (reading 'translations')"** : Cette erreur peut survenir si vous cliquez sur des éléments avant que les données ne soient complètement chargées. Attendez que le chargement soit terminé avant d'interagir avec l'application.
+
+- **Problèmes de connexion à MongoDB** : Si vous rencontrez des problèmes de connexion à MongoDB, vérifiez que le conteneur MongoDB est bien démarré avec `docker ps`. Si nécessaire, redémarrez le conteneur avec `docker-compose restart mongodb`.
+
+- **Problèmes d'API OpenAI ou Pexels** : Vérifiez que vos clés API sont correctement configurées dans le fichier `.env` et qu'elles sont valides.
 
 ## Utilisation
 
@@ -125,5 +166,3 @@ L'application sera accessible à l'adresse : http://localhost:3000
    - Accédez à la section d'administration
    - Entrez le nom du nouveau thème
    - Le système génère automatiquement le contenu et récupère les images appropriées
-
-

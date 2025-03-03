@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Profile;
 import vocabquest.api.model.ThemeData;
 import vocabquest.api.repository.ThemeRepository;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -30,7 +29,7 @@ public class DataLoader {
                 
                 // Load animaux.json data
                 try {
-                    String animauxJson = new String(Files.readAllBytes(Paths.get("../client/public/data/animaux.json")));
+                    String animauxJson = new String(Files.readAllBytes(Paths.get("src/main/resources/data/animaux.json")));
                     ObjectMapper objectMapper = new ObjectMapper();
                     ThemeData animauxTheme = objectMapper.readValue(animauxJson, ThemeData.class);
                     

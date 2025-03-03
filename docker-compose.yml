@@ -6,5 +6,37 @@ services:
     volumes:
       - mongo_data:/data/db
 
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/vocabquest
+      - SPRING_DATA_MONGODB_DATABASE=vocabquest
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - PEXELS_API_KEY=${PEXELS_API_KEY}
+    volumes:
+      - ./api:/app
+      - api_gradle_cache:/root/.gradle
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://api:8080/api
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+
 volumes:
   mongo_data:
+  api_gradle_cache:
