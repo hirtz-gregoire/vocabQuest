@@ -4,7 +4,6 @@ Adrien NAIGEON
 
 ## Accès à l'application
 
-Vous pouvez accéder à l'application de deux façons :
 - **En local** : [http://localhost:3000/](http://localhost:3000/) (après démarrage avec Docker Compose)
 
 ## Présentation
